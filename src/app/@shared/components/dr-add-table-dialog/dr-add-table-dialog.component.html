@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>{{ data ? 'Edit Table' : 'Add Table' }}</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="table.name">
+  </mat-form-field>
+  <br/>
+  <mat-form-field class="example-full-width">
+    <mat-label>User email</mat-label>
+    <input type="text"
+           matInput
+           [(ngModel)]="table.userEmail"
+           [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let user of users" [value]="user.email">{{ user.email }}</mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+  <button mat-flat-button color="primary" (click)="onSaveClick()">Save</button>
+</mat-dialog-actions>
